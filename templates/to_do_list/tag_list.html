@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h1>
+    Tags
+    <a
+      href="{%  url 'to_do_list:tag-create' %}"
+      style="float: right"
+      class="btn btn-primary"
+    >
+      Add tag
+    </a>
+  </h1>
+
+  {% if tag_list %}
+
+    <table class="table">
+
+      <thead class="thead-dark">
+        <tr class="text-center">
+          <th scope="col">Name</th>
+          <th scope="col">Update tag</th>
+          <th scope="col">Delete tag</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for tag in tag_list %}
+        <tr>
+          <td>{{ tag.name }}</td>
+          <td class="text-center">
+            <a class="btn btn-secondary" href="{% url 'to_do_list:tag-update' pk=tag.id %}">
+              Update
+            </a>
+          </td>
+          <td class="text-center">
+            <a class="btn btn-secondary"  href="{% url 'to_do_list:tag-delete' pk=tag.id %}">
+              Delete
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+
+  {% else %}
+    <h3>There are no Tags in TODO List!</h3>
+  {% endif %}
+
+{% endblock %}
