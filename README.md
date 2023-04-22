@@ -17,12 +17,13 @@ Tag page
 ![image](https://user-images.githubusercontent.com/112548104/233767243-9911b2da-eecd-4783-9dd4-6508d6b95847.png)
 
 
-✨ How to use it
+✨ Initialization
 
 👉 Step 1 - Download the code from the GH repository (using GIT)
 
 ```
 git@github.com:Paul-Maslov/TODO-list.git
+cd todo_list
 ```
 
 👉 Step 2 Set Up for Windows
