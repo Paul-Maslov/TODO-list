@@ -1,0 +1,23 @@
+body {
+  margin-top: 20px;
+}
+
+.sidebar-nav {
+  margin-bottom: 100px;
+  padding: 60px;
+  display: inline;
+  list-style: none;
+  text-align: left;
+}
+
+.sidebar-button {
+  height: 80px;
+  width: 160px;
+  line-height: 80px;
+  font-size: 20px;
+  color: white;
+  display: inline-block;
+  background-color: forestgreen;
+  border-radius: 10px;
+  text-align: center;
+}

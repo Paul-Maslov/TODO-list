@@ -1,0 +1,83 @@
+{%  extends "base.html" %}
+
+{% block content %}
+
+  <h1>
+    TODO List
+    <a
+      href="{%  url 'to_do_list:task-create' %}"
+      style="float: right"
+      class="btn btn-primary"
+    >
+      Add task
+    </a>
+  </h1>
+
+  {% if object_list %}
+
+    <table class="table">
+
+      <thead class="thead-dark">
+        <tr class="text-center">
+          <th scope="col">Content & date of creation</th>
+          <th scope="col">Tag</th>
+          <th scope="col">Complete Plan Date</th>
+          <th scope="col">Completion Mark</th>
+          <th scope="col">Upd task</th>
+          <th scope="col">Del task</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for task in task_list.all %}
+        <tr>
+          <td>
+            <p>
+              <h6>{{ task.description }}</h6>
+            </p>
+            <p>{{ task.created_time }}</p>
+          </td>
+          <td>
+            {% for tag in task.tags.all %}
+              <p>{{ tag.name }}</p>
+            {% endfor %}
+          </td>
+          <td class="text-center">{{ task.deadline }}</td>
+          <td class="text-center">
+            {% if task.is_completed %}
+              <p>
+                <form method="POST" action="{% url 'to_do_list:change-status' pk=task.id %}">
+                  {% csrf_token %}
+                    <button class="btn btn-success" name="dobtn">Undo</button>
+                </form>
+              </p>
+              {% else %}
+              <p>
+                 <form method="POST" action="{% url 'to_do_list:change-status' pk=task.id %}">
+                    {% csrf_token %}
+                      <button class="btn btn-info" name="dobtn">Complete</button>
+                 </form>
+                </p>
+            {% endif %}
+          </td>
+          <td class="text-center">
+            <a href="{% url "to_do_list:task-update" pk=task.id %}">
+              🆗
+            </a>
+          </td>
+          <td class="text-center">
+            <a href="{% url "to_do_list:task-delete" pk=task.id %}">
+              ⛔️
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+
+  {% else %}
+    <h3>There no Tasks in TODO List</h3>
+  {% endif %}
+
+{% endblock %}
