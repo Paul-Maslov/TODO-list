@@ -30,4 +30,3 @@ class Task(models.Model):
 
     class Meta:
         ordering = ["is_completed", "deadline"]
-

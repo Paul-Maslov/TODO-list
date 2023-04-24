@@ -32,4 +32,3 @@ class TaskAdmin(admin.ModelAdmin):
 @admin.register(Person)
 class PersonAdmin(UserAdmin):
     list_display = UserAdmin.list_display
-
