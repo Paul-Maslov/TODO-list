@@ -8,7 +8,7 @@ from to_do_list.models import Task, Tag
 TASK_URL = reverse("to_do_list:task-list")
 TAG_URL = reverse("to_do_list:tag-list")
 
-PAGINATION = 1
+PAGINATION = 5
 
 
 class PublicPostTests(TestCase):
@@ -33,12 +33,8 @@ class PrivatePostTests(TestCase):
             password="user12345",
         )
         self.client.force_login(self.user)
-        username = "test_user1"
-        password = "user112345"
-        self.person = get_user_model().objects.create_user(
-            username=username,
-            password=password
-        )
+        self.tag1 = Tag.objects.create(name="home")
+        self.tag2 = Tag.objects.create(name="work")
 
     def test_task_list_response_with_correct_template(self):
         response = self.client.get(TASK_URL)
@@ -55,16 +51,17 @@ class PrivatePostTests(TestCase):
     def test_retrieve_tasks(self):
         self.task1 = Task.objects.create(
             description="Create TestTask1",
-            deadline="2023-04-28",
             is_completed="False",
-            owner=self.person
+            owner=self.user,
         )
+        self.task1.tags.set([self.tag1.id, ])
         self.task2 = Task.objects.create(
             description="Create TestTask2",
-            deadline="2023-04-29",
             is_completed="False",
-            owner=self.person
-        )
+            owner=self.user,
+         )
+        self.task2.tags.set([self.tag2.id, ])
+
         response = self.client.get(TASK_URL)
 
         self.assertEqual(response.status_code, 200)
@@ -91,7 +88,7 @@ class PrivatePostTests(TestCase):
         self.task = Task.objects.create(
             description=task_name,
             is_completed=False,
-            owner=self.person
+            owner=self.user
         )
         response = self.client.get(TASK_URL)
 

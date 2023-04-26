@@ -21,6 +21,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
     queryset = Task.objects.prefetch_related("tags")
     success_url = reverse_lazy("to_do_list:task-list")
+    context_object_name = "task_list"
     paginate_by = 5
 
 
