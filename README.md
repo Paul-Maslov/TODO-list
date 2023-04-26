@@ -1,4 +1,4 @@
-"# TODO-list" 
+"TODO-list" 
 
 Site for managing the performance of personal tasks. 
 
@@ -17,40 +17,22 @@ this button changes the status of the task to the opposite and redirects to home
 
 ```angular2html
 git@github.com:Paul-Maslov/TODO-list.git
-cd todo_list
+cd TODO_list
 ```
 
 
-👉 Step 2 Set Up for Windows
+👉 Step 2 Create virtual venv
 ```angular2html
 virtualenv env
 .\env\Scripts\activate
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 
 ```
 
-👉 Step 3 Set Up Database
-
-```angular2html
-python manage.py makemigrations
-python manage.py migrate
-```
-
-👉 Step 4 Start the app
+👉 Step 3 Start the app
 
 python manage.py runserver
 At this point, the app runs at http://127.0.0.1:8000/.
-
-👉 Step 5 Create superuser
-
-```angular2html
-python manage.py createsuperuser
-```
-
-👉 Step 6 To see this project
-
-You can find DJANGO_SECRET_KEY in file ".env.sample" in the root directory
-
 
 Link to this project
 
