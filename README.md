@@ -35,6 +35,12 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
+👉 Step 4 Start the project
+
+```angular2html
+python manage.py runserver
+```
+
 At this point, the app runs at http://127.0.0.1:8000/.
 
 Link to this project

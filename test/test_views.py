@@ -29,8 +29,8 @@ class PublicPostTests(TestCase):
 class PrivatePostTests(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            username="test_user",
-            password="user12345",
+            username="user2",
+            password="user23456",
         )
         self.client.force_login(self.user)
         self.tag1 = Tag.objects.create(name="home")

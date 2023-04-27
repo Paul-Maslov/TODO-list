@@ -14,8 +14,8 @@ class ModelTest(TestCase):
         self.assertEqual(str(tag_), tag_.name)
 
     def test_task_create_with_elements(self):
-        username = "test_user"
-        password = "user12345"
+        username = "user2"
+        password = "user23456"
         person = get_user_model().objects.create_user(
             username=username,
             password=password
@@ -30,7 +30,7 @@ class ModelTest(TestCase):
         self.assertEqual(task.description, "Create TestTask1")
         self.assertEqual(task.deadline, "2023-04-28")
         self.assertEqual(task.is_completed, "False")
-        self.assertEqual(task.owner.username, "test_user")
+        self.assertEqual(task.owner.username, "user2")
 
 
 

@@ -23,6 +23,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
     success_url = reverse_lazy("to_do_list:task-list")
     context_object_name = "task_list"
     paginate_by = 5
+    # login_url = '/login/'
 
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):

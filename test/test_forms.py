@@ -8,8 +8,8 @@ from to_do_list.models import Tag, Task
 class TaskFormsTests(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            username="test_user",
-            password="user12345",
+            username="user2",
+            password="user23456",
         )
         self.client.force_login(self.user)
 

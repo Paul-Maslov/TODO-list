@@ -1,19 +1,32 @@
 <ul class="sidebar-nav">
 
-  <li>
-    <a class="sidebar-button"
-       href="{% url "to_do_list:task-list" %}">
-      Home
-    </a>
-  </li>
-  <br>
+  {% if user.is_authenticated %}
 
-  <li>
-    <a class="sidebar-button"
-       href="{% url "to_do_list:tag-list" %}">
-      Tags
-    </a>
-  </li>
-  <br>
+    <li>User: {{ user.username }}</li>
+
+    <li>
+      <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+    </li>
+    <br>
+
+    <li>
+      <a class="sidebar-button"
+         href="{% url "to_do_list:task-list" %}">
+        Home
+      </a>
+    </li>
+    <br>
+
+    <li>
+      <a class="sidebar-button"
+         href="{% url "to_do_list:tag-list" %}">
+        Tags
+      </a>
+    </li>
+
+  {% else %}
+     <a class="login btn btn-success" href="{% url 'login' %}">Login</a>
+
+  {% endif %}
 
 </ul>
