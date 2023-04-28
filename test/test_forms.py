@@ -25,6 +25,7 @@ class TaskFormsTests(TestCase):
             {
                 "description": task_name,
                 "is_completed": "False",
+                "deadline": "2023-04-15",
                 "owner": self.user.id,
                 "tags": [self.tag1.id, ]
             },
@@ -37,6 +38,7 @@ class TaskFormsTests(TestCase):
         task_name = "Test create Task"
         task = Task.objects.create(
             description=task_name,
+            deadline="2023-04-15",
             is_completed=False,
             owner=self.user,
          )
@@ -50,6 +52,7 @@ class TaskFormsTests(TestCase):
             {
                 "pk": task.id,
                 "description": "Try to update Task",
+                "deadline": "2023-04-15",
                 "is_completed": "False",
                 "owner": self.user.id,
                 "tags": self.tag1.id

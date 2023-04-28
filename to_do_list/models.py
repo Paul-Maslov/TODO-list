@@ -17,9 +17,9 @@ class Person(AbstractUser):
 
 
 class Task(models.Model):
-    description = models.TextField(null=True, blank=True)
+    description = models.TextField(default="Add the task description!")
     created_time = models.DateTimeField(auto_now_add=True)
-    deadline = models.DateField(null=True, blank=True)
+    deadline = models.DateField(default="2000-01-01")
     is_completed = models.BooleanField()
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,

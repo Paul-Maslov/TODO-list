@@ -7,7 +7,7 @@ from to_do_list.models import Task, Tag
 
 
 def change_task_status(request, pk):
-    if 'dobtn' in request.POST:
+    if request.POST:
         profil = get_object_or_404(Task, id=pk)
         if profil.is_completed:
             profil.is_completed = False
